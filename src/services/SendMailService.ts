@@ -21,7 +21,7 @@ class SendMailService {
             this.client = transporter;
         })
     }
-    async execute(to: String, subject: String, variables: object, path: string) {
+    async execute(to: string, subject: string, variables: object, path: string) {
 
         const templateFileContent = fs.readFileSync(path).toString("utf8")
 

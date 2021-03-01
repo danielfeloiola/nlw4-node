@@ -52,8 +52,7 @@ class SendMailController {
             return response.json(surveyUserAlreadyExists)
         }
 
-        // salvar informacoes na tabela survey_user
-        const surveyUser = SurveyUserRepository.create({
+        const surveyUser = surveyUserRepository.create({
             user_id: user.id,
             survey_id,
         });
@@ -68,4 +67,4 @@ class SendMailController {
         return response.json(surveyUser)
     }
 }
-export {SendMailController}
+export { SendMailController }
