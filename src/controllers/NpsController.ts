@@ -4,12 +4,12 @@ import { SurveyUserRepository } from "../repositories/SurveysUsersRepository";
 
 class NpsController {
   
-  async execute(req: Request, res: Response) {
-    const { survey_id } = req.params;
+  async execute(request: Request, response: Response) {
+    const { survey_id } = request.params;
 
-    const surveysUsersRepository = getCustomRepository(SurveyUserRepository);
+    const surveysUserRepository = getCustomRepository(SurveyUserRepository);
 
-    const surveysUsers = await surveysUsersRepository.find({
+    const surveysUsers = await surveysUserRepository.find({
       survey_id,
       value: Not(IsNull()),
     });
@@ -30,7 +30,7 @@ class NpsController {
 
     const calculate = ( promoters - detractors ) / totalAnswers * 100;
 
-    return res.json({
+    return response.json({
       detractors,
       promoters,
       passives,
